@@ -1,0 +1,54 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon class="color-white">menu</mat-icon>
+    </button>
+    <h1 class="color-white company-title">Madushan Bakery</h1>
+    <button mat-button [matMenuTriggerFor]="beforeMenu">
+      <mat-icon class="color-white">account_circle</mat-icon>
+    </button>
+    <mat-menu
+      #beforeMenu="matMenu"
+      class="options-container"
+      xPosition="before"
+    >
+      <h4 class="position-in-dropdown"></h4>
+      <mat-divider></mat-divider>
+      <button type="button" mat-menu-item>
+        <mat-icon class="logout-icon">logout</mat-icon>Logout
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    [hasBackdrop]="false"
+    autosize
+  >
+    <mat-sidenav
+      class="side-nav side-navigation"
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list class="nav-list">
+        <a
+          class="side-nav-elements"
+          mat-list-item
+          routerLink="/applicationList"
+        >
+          <div class="nav-item">
+            <mat-icon class="side-nav-icon">domain_verification</mat-icon>
+            <h5>Applications</h5>
+          </div>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
