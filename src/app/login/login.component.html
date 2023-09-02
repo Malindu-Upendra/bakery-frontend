@@ -1,0 +1,45 @@
+<div class="login-component">
+  <mat-card class="card">
+    <div class="left-column">
+      <img src="assets/signin-image.jpeg" alt="" class="login-image" />
+    </div>
+    <div class="right-column">
+      <h2 class="login-header">Madushan Bakery</h2>
+      <p>
+        <mat-form-field appearance="outline" class="text-input">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="shan" />
+        </mat-form-field>
+      </p>
+      <p>
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="password" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field> -->
+        <mat-form-field
+          appearance="outline"
+          class="text-input"
+          style="margin-top: -20px"
+        >
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </p>
+      <div class="action-bar">
+        <button mat-raised-button color="primary" class="login-btn">
+          Login
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
