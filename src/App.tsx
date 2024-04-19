@@ -1,9 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
-import LoginPage from "./pages/Login";
+import AppRoutes from "./utils/Routes";
 
 function App() {
-  return <LoginPage />;
+  return <AppRoutes />;
 }
 
 export default App;
