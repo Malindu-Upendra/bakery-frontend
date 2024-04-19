@@ -16,20 +16,22 @@ const Dashboard = () => {
                 <Typography
                   variant="h5"
                   className="text-gray-800"
-                  placeholder=""
-                >
+                  placeholder="" 
+                  onPointerEnterCapture={undefined} 
+                  onPointerLeaveCapture={undefined}                >
                   Customers Summary
                 </Typography>
                 <Typography
                   variant="small"
-                  className="text-gray-800"
-                  placeholder=""
-                >
+                  className="text-gray-800" 
+                  placeholder="" 
+                  onPointerEnterCapture={undefined} 
+                  onPointerLeaveCapture={undefined}   >
                   You can see the list of customers here
                 </Typography>
               </div>
               <div>
-                <Breadcrumbs placeholder={undefined}>
+                <Breadcrumbs placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                   <a href="#" className="opacity-60">
                     Docs
                   </a>

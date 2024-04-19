@@ -84,27 +84,24 @@ const TABLE_ROWS = [
 const UsersOrganism = () => {
   return (
     <div className="w-full">
-      <Card className="h-full w-full" placeholder={undefined}>
+      <Card className="h-full w-full" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         <CardHeader
           floated={false}
           shadow={false}
           className="rounded-none"
-          placeholder={undefined}
-        >
+          placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        >
           <div className="mb-8 flex items-center justify-between gap-8">
             <div>
               <Typography
                 variant="h5"
                 color="blue-gray"
-                placeholder={undefined}
-              >
+                placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}              >
                 Members list
               </Typography>
               <Typography
                 color="gray"
                 className="mt-1 font-normal"
-                placeholder={undefined}
-              >
+                placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}              >
                 See information about all members
               </Typography>
             </div>
@@ -113,25 +110,23 @@ const UsersOrganism = () => {
                 variant="outlined"
                 color="blue"
                 size="sm"
-                placeholder={undefined}
-              >
+                placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}              >
                 view all
               </Button>
               <Button
                 className="flex items-center gap-3"
                 size="sm"
                 color="blue"
-                placeholder={undefined}
-              >
+                placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}              >
                 <FaUserPlus strokeWidth={2} className="h-4 w-4" /> Add member
               </Button>
             </div>
           </div>
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <Tabs value="all" className="w-full md:w-max">
-              <TabsHeader placeholder={undefined}>
+              <TabsHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 {TABS.map(({ label, value }) => (
-                  <Tab key={value} value={value} placeholder={undefined}>
+                  <Tab key={value} value={value} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     &nbsp;&nbsp;{label}&nbsp;&nbsp;
                   </Tab>
                 ))}
@@ -142,12 +137,11 @@ const UsersOrganism = () => {
                 label="Search"
                 icon={<FaSearch className="h-5 w-5" />}
                 crossOrigin={undefined}
-                color="blue"
-              />
+                color="blue" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}              />
             </div>
           </div>
         </CardHeader>
-        <CardBody className="overflow-scroll px-0" placeholder={undefined}>
+        <CardBody className="overflow-scroll px-0" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
           <table className="mt-4 w-full min-w-max table-auto text-left">
             <thead>
               <tr>
@@ -160,8 +154,7 @@ const UsersOrganism = () => {
                       variant="small"
                       color="blue-gray"
                       className="flex items-center justify-between gap-2 font-normal leading-none opacity-70"
-                      placeholder={undefined}
-                    >
+                      placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                    >
                       {head}{" "}
                       {index !== TABLE_HEAD.length - 1 && (
                         <FaSort strokeWidth={2} className="h-4 w-4" />
@@ -187,23 +180,20 @@ const UsersOrganism = () => {
                             src={img}
                             alt={name}
                             size="sm"
-                            placeholder={undefined}
-                          />
+                            placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                          />
                           <div className="flex flex-col">
                             <Typography
                               variant="small"
                               color="blue-gray"
                               className="font-normal"
-                              placeholder={undefined}
-                            >
+                              placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                            >
                               {name}
                             </Typography>
                             <Typography
                               variant="small"
                               color="blue-gray"
                               className="font-normal opacity-70"
-                              placeholder={undefined}
-                            >
+                              placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                            >
                               {email}
                             </Typography>
                           </div>
@@ -215,16 +205,14 @@ const UsersOrganism = () => {
                             variant="small"
                             color="blue-gray"
                             className="font-normal"
-                            placeholder={undefined}
-                          >
+                            placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                          >
                             {job}
                           </Typography>
                           <Typography
                             variant="small"
                             color="blue-gray"
                             className="font-normal opacity-70"
-                            placeholder={undefined}
-                          >
+                            placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                          >
                             {org}
                           </Typography>
                         </div>
@@ -244,14 +232,13 @@ const UsersOrganism = () => {
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
-                          placeholder={undefined}
-                        >
+                          placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                        >
                           {date}
                         </Typography>
                       </td>
                       <td className={classes}>
                         <Tooltip content="Edit User">
-                          <IconButton variant="text" placeholder={undefined}>
+                          <IconButton variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                             <FaPencilAlt className="h-4 w-4" />
                           </IconButton>
                         </Tooltip>
@@ -265,14 +252,12 @@ const UsersOrganism = () => {
         </CardBody>
         <CardFooter
           className="flex items-center justify-between border-t border-blue-gray-50 p-4"
-          placeholder={undefined}
-        >
+          placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        >
           <Typography
             variant="small"
             color="blue-gray"
             className="font-normal"
-            placeholder={undefined}
-          >
+            placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
             Page 1 of 10
           </Typography>
           <div className="flex gap-2">
@@ -280,16 +265,14 @@ const UsersOrganism = () => {
               color="blue"
               variant="outlined"
               size="sm"
-              placeholder={undefined}
-            >
+              placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
               Previous
             </Button>
             <Button
               color="blue"
               variant="outlined"
               size="sm"
-              placeholder={undefined}
-            >
+              placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
               Next
             </Button>
           </div>
