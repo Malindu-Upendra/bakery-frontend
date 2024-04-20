@@ -17,6 +17,8 @@ import {
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { getAllTheUsers } from "../../../services/user_service";
+import AddMemberForm from "../../templates/modals/AddMemberForm";
+import EditMemberForm from "../../templates/modals/EditMemberForm copy";
 
 const TABS = [
   {
@@ -42,6 +44,9 @@ const UsersOrganism = () => {
   const [status, setStatus] = useState<number | string>("all");
   const [lastPage, setLastPage] = useState(1);
   const [totalRecords, setTotalRecords] = useState(null);
+
+  const [isAddUserModal, setIsAddUserModal] = useState(false);
+  const [isEditUserModal, setIsEditUserModal] = useState(false);
 
   useEffect(() => {
     getAllTheUsers({ currentPage, searchText, status }).then((res) => {
@@ -104,6 +109,7 @@ const UsersOrganism = () => {
                 placeholder={undefined}
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
+                onClick={() => setIsAddUserModal(true)}
               >
                 <FaUserPlus strokeWidth={2} className='h-4 w-4' /> Add member
               </Button>
@@ -247,6 +253,7 @@ const UsersOrganism = () => {
                       <Tooltip content='Edit User'>
                         <IconButton
                           variant='text'
+                          onClick={() => setIsEditUserModal(true)}
                           placeholder={undefined}
                           onPointerEnterCapture={undefined}
                           onPointerLeaveCapture={undefined}
@@ -311,6 +318,8 @@ const UsersOrganism = () => {
           </div>
         </CardFooter>
       </Card>
+      <AddMemberForm open={isAddUserModal} setOpen={setIsAddUserModal} />
+      <EditMemberForm open={isEditUserModal} setOpen={setIsEditUserModal} />
     </div>
   );
 };
