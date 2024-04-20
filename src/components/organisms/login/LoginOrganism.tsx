@@ -1,7 +1,7 @@
 import { Button, Input, Typography } from "@material-tailwind/react";
 import loginImage from "../../../assets/images/login-illustration.png";
 import { FaUser, FaLock } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../services/user_service";
 import { useState } from "react";
 import { toast, Bounce } from "react-toastify";

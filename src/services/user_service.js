@@ -19,3 +19,9 @@ export async function getLoggedInUser() {
     .get(apiUrl + "users/logged-in-user", { headers })
     .then((data) => data);
 }
+
+export async function getAllTheUsers(obj) {
+  return await axios
+    .post(apiUrl + "users/get-all-users", obj, { headers })
+    .then((data) => data);
+}
