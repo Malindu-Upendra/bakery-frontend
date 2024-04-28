@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-toast {
+  z-index: 9999; /* Set your desired z-index value */
+}

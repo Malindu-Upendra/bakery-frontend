@@ -8,8 +8,8 @@ import { ToastContainer } from "react-toastify";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
+    <ToastContainer toastClassName='custom-toast' />
     <App />
-    <ToastContainer />
   </React.StrictMode>
 );
 
