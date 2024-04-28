@@ -18,7 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { getAllTheUsers } from "../../../services/user_service";
 import AddMemberForm from "../../templates/modals/AddMemberForm";
-import EditMemberForm from "../../templates/modals/EditMemberForm copy";
+import EditMemberForm from "../../templates/modals/EditMemberForm";
 
 const TABS = [
   {
@@ -48,13 +48,15 @@ const UsersOrganism = () => {
   const [isAddUserModal, setIsAddUserModal] = useState(false);
   const [isEditUserModal, setIsEditUserModal] = useState(false);
 
+  const [userAdded, setUserAdded] = useState(0);
+
   useEffect(() => {
     getAllTheUsers({ currentPage, searchText, status }).then((res) => {
       setUsers(res.data.users);
       setLastPage(res.data.totalPages);
       setTotalRecords(res.data.totalRecords);
     });
-  }, [status, searchText, currentPage]);
+  }, [status, searchText, currentPage, userAdded]);
 
   const handleTabChange = (value: any) => {
     setStatus(value);
@@ -318,7 +320,7 @@ const UsersOrganism = () => {
           </div>
         </CardFooter>
       </Card>
-      <AddMemberForm open={isAddUserModal} setOpen={setIsAddUserModal} />
+      <AddMemberForm open={isAddUserModal} setOpen={setIsAddUserModal} userAdded={setUserAdded} />
       <EditMemberForm open={isEditUserModal} setOpen={setIsEditUserModal} />
     </div>
   );

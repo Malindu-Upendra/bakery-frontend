@@ -3,11 +3,15 @@ import loginImage from "../../../assets/images/login-illustration.png";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../services/user_service";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, Bounce } from "react-toastify";
 
 const LoginOrganism = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.removeItem("token");
+  }, []);
 
   const [isLoading, setIsloading] = useState(false);
   const [formInfo, setFormInfo] = useState({

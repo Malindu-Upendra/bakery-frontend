@@ -10,18 +10,8 @@ import {
   Option,
 } from "@material-tailwind/react";
 import { Field, Form, Formik } from "formik";
-import { createUser } from "../../../services/user_service";
-import { toast, Bounce } from "react-toastify";
 
-const AddMemberForm = ({
-  open,
-  setOpen,
-  userAdded,
-}: {
-  open: boolean;
-  setOpen: (value: boolean) => void;
-  userAdded: (value: number) => void;
-}) => {
+const EditMemberForm = ({ open, setOpen }: { open: boolean; setOpen: (value: boolean) => void }) => {
   const handleOpen = () => setOpen(!open);
   const initialValues = {
     firstName: "",
@@ -37,91 +27,55 @@ const AddMemberForm = ({
   };
 
   const handleSubmit = (values: any) => {
-    createUser(values)
-      .then((res) => {
-        if (res.data.result) {
-          toast.success(res.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Bounce,
-          });
-          userAdded(1);
-          handleOpen();
-        } else {
-          toast.error(res.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Bounce,
-          });
-        }
-      })
-      .catch((err) => {
-        toast.error("Api Error Occured", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        });
-      });
+    console.log("Submitted values:", values);
+    // You can handle form submission logic here
   };
 
   const validate = (values: any) => {
     const errors: any = {};
 
-    if (!values.firstName && values.firstName === "") {
+    // Validation rules for First Name
+    if (!values.firstName) {
       errors.firstName = "First Name is required";
     }
 
-    if (!values.lastName && values.lastName === "") {
+    // Validation rules for Last Name
+    if (!values.lastName) {
       errors.lastName = "Last Name is required";
     }
 
-    if (!values.username && values.username === "") {
+    // Validation rules for Username
+    if (!values.username) {
       errors.username = "Username is required";
     }
 
-    if (!values.city && values.city === "") {
-      errors.city = "City is required";
-    }
+    // Validation rules for City
+    // if (!values.city) {
+    //   errors.city = "City is required";
+    // }
 
-    if (!values.birthdate && values.birthdate === "") {
+    // Validation rules for Birthdate
+    if (!values.birthdate) {
       errors.birthdate = "Birthdate is required";
     }
 
-    if (!values.phone && values.phone === "") {
+    // Validation rules for Phone
+    if (!values.phone) {
       errors.phone = "Phone is required";
     }
 
-    // if (!values.email && values.email === "") {
-    //   errors.email = "Email is required";
-    // }
+    // Validation rules for Role
+    if (!values.role) {
+      errors.role = "Role is required";
+    }
 
-    // if (!values.role && values.role === "") {
-    //   errors.role = "Role is required";
-    // }
-
-    if (!values.password && values.password === "") {
+    // Validation rules for Password
+    if (!values.password) {
       errors.password = "Password is required";
     }
 
-    if (!values.confirmPassword && values.confirmPassword === "") {
+    // Validation rules for Confirm Password
+    if (!values.confirmPassword) {
       errors.confirmPassword = "Confirm Password is required";
     } else if (values.confirmPassword !== values.password) {
       errors.confirmPassword = "Passwords do not match";
@@ -147,7 +101,7 @@ const AddMemberForm = ({
         onPointerLeaveCapture={undefined}
       >
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validate}>
-          {({ values, errors, touched }) => (
+          {({ values, errors }) => (
             <Form>
               <CardBody
                 className='flex flex-col gap-4'
@@ -162,36 +116,36 @@ const AddMemberForm = ({
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  Create User
+                  Create Member
                 </Typography>
                 <div className='w-full grid grid-cols-2 gap-5'>
                   <div>
                     <Field name='firstName' type='text' as={Input} label='First Name' size='lg' color='blue' />
-                    {errors.firstName && touched.firstName && <div className='text-red-500'>{errors.firstName}</div>}
+                    {errors.firstName && <div className='text-red-500'>{errors.firstName}</div>}
                   </div>
                   <div>
                     <Field name='lastName' type='text' as={Input} label='Last Name' size='lg' color='blue' />
-                    {errors.lastName && touched.lastName && <div className='text-red-500'>{errors.lastName}</div>}
+                    {errors.lastName && <div className='text-red-500'>{errors.lastName}</div>}
                   </div>
                   <div>
                     <Field name='username' type='text' as={Input} label='Username' size='lg' color='blue' />
-                    {errors.username && touched.username && <div className='text-red-500'>{errors.username}</div>}
+                    {errors.username && <div className='text-red-500'>{errors.username}</div>}
                   </div>
                   <div>
                     <Field name='city' type='text' as={Input} label='City' size='lg' color='blue' />
-                    {errors.city && touched.city && <div className='text-red-500'>{errors.city}</div>}
+                    {errors.city && <div className='text-red-500'>{errors.city}</div>}
                   </div>
                   <div>
                     <Field name='birthdate' type='date' as={Input} label='Birthdate' size='lg' color='blue' />
-                    {errors.birthdate && touched.birthdate && <div className='text-red-500'>{errors.birthdate}</div>}
+                    {errors.birthdate && <div className='text-red-500'>{errors.birthdate}</div>}
                   </div>
                   <div>
                     <Field name='phone' type='text' as={Input} label='Phone' size='lg' color='blue' />
-                    {errors.phone && touched.phone && <div className='text-red-500'>{errors.phone}</div>}
+                    {errors.phone && <div className='text-red-500'>{errors.phone}</div>}
                   </div>
                   <div>
                     <Field name='email' type='text' as={Input} label='Email' size='lg' color='blue' />
-                    {errors.email && touched.email && <div className='text-red-500'>{errors.email}</div>}
+                    {errors.email && <div className='text-red-500'>{errors.email}</div>}
                   </div>
                   <div>
                     <Field name='role' as={Select} label='Role' color='blue'>
@@ -199,11 +153,11 @@ const AddMemberForm = ({
                       <Option value='admin'>Admin</Option>
                       <Option value='user'>User</Option>
                     </Field>
-                    {errors.role && touched.role && <div className='text-red-500'>{errors.role}</div>}
+                    {errors.role && <div className='text-red-500'>{errors.role}</div>}
                   </div>
                   <div>
                     <Field name='password' type='password' as={Input} label='Password' size='lg' color='blue' />
-                    {errors.password && touched.password && <div className='text-red-500'>{errors.password}</div>}
+                    {errors.password && <div className='text-red-500'>{errors.password}</div>}
                   </div>
                   <div>
                     <Field
@@ -214,9 +168,7 @@ const AddMemberForm = ({
                       size='lg'
                       color='blue'
                     />
-                    {errors.confirmPassword && touched.confirmPassword && (
-                      <div className='text-red-500'>{errors.confirmPassword}</div>
-                    )}
+                    {errors.confirmPassword && <div className='text-red-500'>{errors.confirmPassword}</div>}
                   </div>
                 </div>
               </CardBody>
@@ -246,4 +198,4 @@ const AddMemberForm = ({
   );
 };
 
-export default AddMemberForm;
+export default EditMemberForm;

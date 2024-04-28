@@ -10,7 +10,7 @@ const Dashboard = () => {
         <NavbarOrganism />
         <div className='mx-5 flex space-x-5'>
           <Sidebar />
-          <div className='w-full space-y-10'>
+          <div className='w-full space-y-5'>
             <div className='w-full mt-5 flex justify-between'>
               <div className='flex flex-col'>
                 <Typography
@@ -39,12 +39,9 @@ const Dashboard = () => {
                   onPointerLeaveCapture={undefined}
                 >
                   <a href='#' className='opacity-60'>
-                    Docs
+                    Settings
                   </a>
-                  <a href='#' className='opacity-60'>
-                    Components
-                  </a>
-                  <a href='#'>Breadcrumbs</a>
+                  <a href='#'>Users</a>
                 </Breadcrumbs>
               </div>
             </div>
