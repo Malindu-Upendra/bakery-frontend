@@ -1,0 +1,111 @@
+<div class="users-page">
+  <div class="page-header">
+    <div>
+      <h1>Users</h1>
+      <p class="subtitle">{{ totalRecords() }} total members</p>
+    </div>
+    <button class="btn-add" (click)="openAddModal()">+ Add Member</button>
+  </div>
+
+  <!-- Filters & Search -->
+  <div class="toolbar">
+    <div class="filter-tabs">
+      <button
+        class="tab"
+        [class.active]="activeFilter() === 'all'"
+        (click)="setFilter('all')"
+      >All</button>
+      <button
+        class="tab"
+        [class.active]="activeFilter() === 'enabled'"
+        (click)="setFilter('enabled')"
+      >Enabled</button>
+      <button
+        class="tab"
+        [class.active]="activeFilter() === 'disabled'"
+        (click)="setFilter('disabled')"
+      >Disabled</button>
+    </div>
+
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        placeholder="Search by name, username, city, email..."
+        [value]="searchText()"
+        (input)="onSearchChange($any($event.target).value)"
+      />
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-card">
+    @if (isLoading()) {
+      <div class="loading-state">Loading users...</div>
+    } @else if (users().length === 0) {
+      <div class="empty-state">No users found.</div>
+    } @else {
+      <table>
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th>Username</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Joined</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users(); track user.id) {
+            <tr>
+              <td>
+                <div class="user-cell">
+                  <div class="avatar">{{ getInitials(user) }}</div>
+                  <div>
+                    <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
+                    <div class="user-email">{{ user.email }}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-muted">{{ user.userName }}</td>
+              <td class="text-muted">{{ user.phone }}</td>
+              <td class="text-muted">{{ user.role?.role || '—' }}</td>
+              <td>
+                <span class="badge" [class]="getStatusClass(user.status)">
+                  {{ getStatusLabel(user.status) }}
+                </span>
+              </td>
+              <td class="text-muted">{{ user.createdAt | date: 'MMM d, yyyy' }}</td>
+              <td>
+                <button class="btn-edit" (click)="openEditModal(user)">Edit</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+
+  <!-- Pagination -->
+  @if (totalPages() > 1) {
+    <div class="pagination">
+      <button class="btn-page" (click)="prevPage()" [disabled]="currentPage() === 1">← Prev</button>
+      <span class="page-info">Page {{ currentPage() }} of {{ totalPages() }}</span>
+      <button class="btn-page" (click)="nextPage()" [disabled]="currentPage() === totalPages()">Next →</button>
+    </div>
+  }
+</div>
+
+<!-- Modals -->
+<app-add-member
+  [(open)]="isAddModalOpen"
+  (memberAdded)="onMemberAdded()"
+></app-add-member>
+
+<app-edit-member
+  [(open)]="isEditModalOpen"
+  [user]="selectedUser"
+  (memberUpdated)="onMemberUpdated()"
+></app-edit-member>

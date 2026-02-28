@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <span class="brand-icon">🥐</span>
+    <span class="brand-name">Madushan Bakery</span>
+  </div>
+  <div class="navbar-user">
+    @if (userName()) {
+      <div class="user-avatar">{{ userName().charAt(0) }}</div>
+      <span class="user-name">{{ userName() }}</span>
+    }
+  </div>
+</nav>
